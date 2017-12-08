@@ -6,7 +6,7 @@ BEGIN
 END
 
 create database JobSearch
-
+yolo
 GO
 USE JobSearch
 
