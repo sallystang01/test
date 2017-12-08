@@ -12,7 +12,7 @@ create database LibraryScript1
 GO
 USE LibraryScript1
 
-
+exec sp_changedbowner 'sa'
 
 create table supplier
 
