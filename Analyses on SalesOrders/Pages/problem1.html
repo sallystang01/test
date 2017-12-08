@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html>
+<title>Problem 1</title>
+<head>
+<style type="text/css">
+
+.header {color:#000000;
+		text-shadow: 2px 2px 2px black;
+		font-size: 120%;
+		
+}
+#div1 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+height: 2000px;
+
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+table, th, td {
+border: 1px solid black;
+padding: 1px;
+border-spacing: 15px;
+float: center;
+
+}
+.container {
+			
+			background-color: white;
+			position: relative;
+			opacity: 0.7;
+			height: 5px;
+			padding-top: 20px;
+			padding-bottom: 30px;
+			margin: -25px 100px 0px 100px;
+			text-decoration: none;
+			border: 3px solid #00ccff;
+			}
+.menuitem a{
+		color: black;
+		position: relative;
+		text-decoration: none;
+		text-shadow: 1px 2px 10px black;
+		font: bold 20px/10px Georiga, serif;
+	
+	}
+	
+	.title a{
+		
+			margin: 3px 2px;
+			color: #ffffff;
+			text-shadow: 2px 2px 1px black;
+			text-decoration: none;
+			
+			font: bold 70px/100px Georgia, serif;
+			
+			}	
+#question {
+	position: absolute;
+	top: 320px;
+	right: 775px;
+	width: 520px;
+	height: 250px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+	}
+#solution {
+	position: absolute;
+	top: 320px;
+	right: 50px;
+	width: 700px;
+	height: 250px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#table {
+	position: absolute;
+	top: 620px;
+	right: 885px;
+	width: 400px;
+	height: 1510px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#proof {
+	position: absolute;
+	top: 620px;
+	right: 150px;
+	width: 600px;
+	height: 150px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#explaination {
+	position: absolute;
+	top: 850px;
+	right: 150px;
+	width: 600px;
+	height: 150px;
+	border: 3px solid black;	
+	background: rgba(201, 214, 229, 0.5);
+
+}
+a.menuactive {color: white;
+font-size: 180%;
+border-right: 4px solid #00399D;
+background-color: lightgrey;
+}	
+a.menu:hover {color: white;
+border-left: 4px solid #00399D;
+background-color: lightgrey;}	
+#grad {
+	background: radial-gradient(circle, #9CBFE8, #4694F0, #A0A4A8);
+
+}
+</style>
+</head>
+<body id="grad">
+<center>
+<h1 class="title"><a href="../index.html">Problem 1</a></h1>
+<div class="container">
+		<div class="menuitem">
+		
+						• <a class="menuactive" href="problem1.html">Problem 1</a> • 
+						<a class="menu"href="problem2.html">Problem 2</a> • 
+						<a class="menu" href="problem3.html">Problem 3</a> • 
+						<a class="menu" href="problem4.html">Problem 4</a> • 
+						<a class="menu" href="problem5.html">Problem 5</a> • 
+						<a class="menu" href="datatype.html">Data Types</a> • 
+						<a class="menu" href="resume.html">Resume</a> • 
+						
+	
+	</div>
+	</div>
+
+</center>
+<div id="div1">
+
+<div id="question">
+<center>
+<h3 class="header">Question</h3>
+<p>"How many orders have been palced per month from the earliest date to the last? Return a row for every month and year shown in the database."</p>
+</center>
+</div>
+<div id="solution">
+<center>
+<h3 class="header">Solution</h3>
+<pre>
+select year(OrderDate) [Year] ,
+		datename(month, OrderDate) [Month], 
+		count(salesorderid) [Orders]
+from sales.SalesOrderHeader
+group by datename(month, OrderDate), year(OrderDate), datepart(month, OrderDate)
+order by year(orderdate), datepart(month, OrderDate)
+
+</pre>
+</center>
+</div>
+<div id="table">
+<center>
+<h3 class="header">Table</h3>
+<table>
+<tt>Orders Per Month</tt>
+  <tr>
+    <th>Year</th>
+    <th>Month</th>
+	<th>Average</th>
+   </tr>
+  <tr>
+    <td>2005</td>
+    <td>July</td>
+	<td>184</td>
+      </tr>
+  <tr>
+    <td>2005</td>
+    <td>August</td> 
+	<td>231</td>
+   </tr>
+    <tr>
+    <td>2005</td>
+    <td>September</td> 
+	<td>206</td>
+   </tr>
+  <tr>
+    <td>2005</td>
+    <td>October</td> 
+	<td>201</td>
+      </tr>
+  <tr>
+    <td>2005</td>
+    <td>November</td> 
+	<td>259</td>
+   </tr>
+    <tr>
+    <td>2005</td>
+    <td>December</td> 
+	<td>298</td>
+   </tr>
+  <tr>
+    <td>2006</td>
+    <td>January</td> 
+	<td>228</td>
+   </tr>
+  <tr>
+    <td>2006</td>
+    <td>February</td> 
+	<td>250</td>
+   </tr>
+    <tr>
+    <td>2006</td>
+    <td>March</td>
+<td>263</td>	
+   </tr>
+  <tr>
+    <td>2006</td>
+    <td>April</td> 
+	<td>244</td>
+      </tr>
+  <tr>
+    <td>2006</td>
+    <td>May</td> 
+	<td>299</td>
+   </tr>
+    <tr>
+    <td>2006</td>
+    <td>June</td> 
+	<td>282</td>
+   </tr>
+     <tr>
+    <td>2006</td>
+    <td>July</td> 
+	<td>325</td>
+   </tr>
+     <tr>
+    <td>2006</td>
+    <td>August</td> 
+	<td>420</td>
+   </tr>
+     <tr>
+    <td>2006</td>
+    <td>September</td> 
+	<td>309</td>
+   </tr>
+     <tr>
+    <td>2006</td>
+    <td>October</td> 
+	<td>302</td>
+   </tr>
+     <tr>
+    <td>2006</td>
+    <td>November</td> 
+	<td>326</td>
+   </tr>
+     <tr>
+    <td>2006</td>
+    <td>December</td> 
+	<td>444</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>January</td> 
+	<td>309</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>February</td> 
+	<td>404</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>March</td> 
+	<td>378</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>April</td>
+	<td>368</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>May</td> 
+	<td>469</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>June</td> 
+	<td>423</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>July</td> 
+	<td>609</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>August</td> 
+	<td>1760</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>September</td>
+	<td>1783</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>October</td> 
+	<td>1779</td>
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>November</td>
+<td>1889</td>	
+   </tr>
+     <tr>
+    <td>2007</td>
+    <td>December</td> 
+	<td>2272</td>
+   </tr>
+     <tr>
+    <td>2008</td>
+    <td>January</td> 
+	<td>1946</td>
+   </tr>
+    <tr>
+    <td>2008</td>
+    <td>February</td> 
+	<td>2032</td>
+   </tr>
+    <tr>
+    <td>2008</td>
+    <td>March</td> 
+	<td>2109</td>
+   </tr>
+    <tr>
+    <td>2008</td>
+    <td>April</td> 
+	<td>2128</td>
+   </tr>
+    <tr>
+    <td>2008</td>
+    <td>May</td> 
+	<td>2386</td>
+   </tr>
+    <tr>
+    <td>2008</td>
+    <td>June</td> 
+	<td>2374</td>
+   </tr>
+    <tr>
+    <td>2008</td>
+    <td>July</td> 
+	<td>976</td>
+   </tr>
+   
+   
+
+</table>
+</center>
+</div>
+<div id="proof">
+<center>
+<h3 class="header">Proof Query</h3>
+<pre>
+select count(*) 
+from sales.SalesOrderHeader soh
+where datepart(month, soh.OrderDate) = 7
+and datepart(year, soh.OrderDate) = 2005
+</pre>
+</div>
+<div id="explaination">
+<center>
+<h3 class="header">Explaination</h3>
+<p>In the following query, it queries the rows from the sales.SalesOrderHeader table.
+ Then, it groups the orders by year and month. Additionally, the select statment 
+ returns for each group, the orderdate year, month, and the total count per month. 
+ Finally, sorts the rows by year, then by month. </p>
+</div>
+</center>
+</div>
+
+</body>
+
+</html>

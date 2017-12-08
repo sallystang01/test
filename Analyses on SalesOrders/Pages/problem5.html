@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html>
+<title>Problem 5</title>
+<head>
+<style type="text/css">
+
+.header {color:#000000;
+		text-shadow: 2px 2px 2px black;
+		font-size: 120%;
+		
+}
+}
+#div1 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+
+#div2 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+height: 2000px;
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+.container {
+			
+			background-color: white;
+			position: relative;
+			opacity: 0.7;
+			height: 5px;
+			padding-top: 20px;
+			padding-bottom: 30px;
+			margin: -25px 100px 0px 100px;
+			text-decoration: none;
+			border: 3px solid #00ccff;
+			}
+.menuitem a{
+		color: black;
+		position: relative;
+		text-decoration: none;
+		text-shadow: 1px 2px 10px black;
+		font: bold 20px/10px Georiga, serif;
+	
+	}
+	
+	.title a{
+		
+			margin: 3px 2px;
+			color: #ffffff;
+			text-shadow: 2px 2px 1px black;
+			text-decoration: none;
+			
+			font: bold 70px/100px Georgia, serif;
+			
+			}	
+			
+table, th, td {
+border: 1px solid black;
+padding: 1px;
+border-spacing: 15px;
+float: center;
+
+}
+#question {
+	position: absolute;
+	top: 320px;
+	right: 775px;
+	width: 520px;
+	height: 250px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+	}
+#solution {
+	position: absolute;
+	top: 320px;
+	right: 50px;
+	width: 700px;
+	height: 250px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#table {
+	position: absolute;
+	top: 620px;
+	right: 885px;
+	width: 400px;
+	height: 1300px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#proof {
+	position: absolute;
+	top: 620px;
+	right: 150px;
+	width: 600px;
+	height: 370px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#explaination {
+	position: absolute;
+	top: 1050px;
+	right: 150px;
+	width: 600px;
+	height: 200px;
+	border: 3px solid black;	
+	background: rgba(201, 214, 229, 0.5);
+	}
+#grad {
+	background: radial-gradient(circle, #9CBFE8, #4694F0, #A0A4A8);
+
+}
+a.menuactive {color: white;
+font-size: 180%;
+border-right: 4px solid #00399D;
+background-color: lightgrey;
+}	
+a.menu:hover {color: white;
+border-left: 4px solid #00399D;
+background-color: lightgrey;}		
+</style>
+</head>
+<body id="grad">
+<center>
+
+<h1 class="title"><a href="../index.html">Problem 5</a></h1>
+<div class="container">
+		<div class="menuitem">
+		
+						• <a class="menu" href="problem1.html">Problem 1</a> • 
+						<a class="menu"href="problem2.html">Problem 2</a> • 
+						<a class="menu" href="problem3.html">Problem 3</a> • 
+						<a class="menu" href="problem4.html">Problem 4</a> • 
+						<a class="menuactive" href="problem5.html">Problem 5</a> • 
+						<a class="menu" href="datatype.html">Data Types</a> • 
+						<a class="menu" href="resume.html">Resume</a> • 
+						
+	
+	</div>
+	</div>
+
+</center>
+<center>
+<div id="div2">
+<div id="question">
+<center>
+<h3 class="header">Question</h3>
+<p>What is the average sales per day of the month? (31 rows)</p>
+</center>
+</div>
+<div id="solution">
+<center>
+<h3 class="header">Solution</h3>
+<pre>
+select		DailyTotals.[DayOfMonth], AVG(DailyTotals.Sales)
+from		
+	(select		DATEPART(DAY, soh.OrderDate) [DayOfMonth], 
+				sum(sod.UnitPrice * sod.OrderQty) [Sales]
+	from		sales.SalesOrderHeader soh
+	inner join	sales.SalesOrderDetail sod
+	on			sod.SalesOrderID = soh.SalesOrderID
+	group by	soh.OrderDate) [DailyTotals]
+GROUP BY	DailyTotals.[DayOfMonth]
+ORDER BY	DailyTotals.[DayOfMonth]
+
+</pre>
+</center>
+</div>
+<div id="table">
+<center>
+<h3 class="header">Table</h3>
+<table>
+<tt>Average Sales per Day of the Month</tt>
+  <tr>
+    <th>Day</th>
+    <th>Average</th> 
+   </tr>
+  <tr>
+    <td>1</td>
+    <td>2214078.9564</td> 
+      </tr>
+  <tr>
+    <td>2</td>
+    <td>24113.4114</td> 
+   </tr>
+    <tr>
+    <td>3</td>
+    <td>26852.8026</td> 
+   </tr>
+  <tr>
+    <td>4</td>
+    <td>24519.8171</td> 
+      </tr>
+  <tr>
+    <td>5</td>
+    <td>24672.6816</td> 
+   </tr>
+    <tr>
+    <td>6</td>
+    <td>26476.9467</td> 
+   </tr>
+  <tr>
+    <td>7</td>
+    <td>27940.0419</td> 
+   </tr>
+  <tr>
+    <td>8</td>
+    <td>28883.5379</td> 
+   </tr>
+    <tr>
+    <td>9</td>
+    <td>25596.3806</td> 
+   </tr>
+  <tr>
+    <td>10</td>
+    <td>22417.0754</td> 
+      </tr>
+  <tr>
+    <td>11</td>
+    <td>27453.2794</td> 
+   </tr>
+    <tr>
+    <td>12</td>
+    <td>28850.8833</td> 
+   </tr>
+     <tr>
+    <td>13</td>
+    <td>26780.2008</td> 
+   </tr>
+     <tr>
+    <td>14</td>
+    <td>26833.5901</td> 
+   </tr>
+     <tr>
+    <td>15</td>
+    <td>26343.4803</td> 
+   </tr>
+     <tr>
+    <td>16</td>
+    <td>22752.0886</td> 
+   </tr>
+     <tr>
+    <td>17</td>
+    <td>25343.7727</td> 
+   </tr>
+     <tr>
+    <td>18</td>
+    <td>26854.075</td> 
+   </tr>
+     <tr>
+    <td>19</td>
+    <td>28660.364</td> 
+   </tr>
+     <tr>
+    <td>20</td>
+    <td>29024.2464</td> 
+   </tr>
+     <tr>
+    <td>21</td>
+    <td>24923.8214</td> 
+   </tr>
+     <tr>
+    <td>22</td>
+    <td>25844.1548</td> 
+   </tr>
+     <tr>
+    <td>23</td>
+    <td>25439.7034</td> 
+   </tr>
+     <tr>
+    <td>24</td>
+    <td>29531.6313</td> 
+   </tr>
+     <tr>
+    <td>25</td>
+    <td>22721.2271</td> 
+   </tr>
+     <tr>
+    <td>26</td>
+    <td>26262.3829</td> 
+   </tr>
+     <tr>
+    <td>27</td>
+    <td>25762.6379</td> 
+   </tr>
+     <tr>
+    <td>28</td>
+    <td>25977.651</td> 
+   </tr>
+     <tr>
+    <td>29</td>
+    <td>25714.138</td> 
+   </tr>
+     <tr>
+    <td>30</td>
+    <td>27168.589</td> 
+   </tr>
+     <tr>
+    <td>31</td>
+    <td>25281.7387</td> 
+   </tr>
+   
+
+</table>
+</div>
+<div id="proof">
+<center>
+<h3 class="header">Proof Query</h3>
+<pre>
+-- Proof - two steps
+
+select		sum(sod.UnitPrice * sod.OrderQty) [Sales]
+from		sales.SalesOrderHeader soh
+inner join	sales.SalesOrderDetail sod
+on			sod.SalesOrderID = soh.SalesOrderID
+WHERE		DATEPART(DAY, SOH.OrderDate) = 1
+
+-- 14249758.0193
+
+select		count(distinct soh.OrderDate)
+from		Sales.SalesOrderHeader SOH
+WHERE		DATEPART(DAY, SOH.OrderDate) = 1
+
+-- 37
+
+select (14249758.0193 / 37)
+
+-- 385128.5951162
+
+</pre>
+</center>
+</div>
+<div id="explaination">
+<center>
+
+<h3 class="header">Explaination</h3>
+<p>The sub-query statement queries the rows from the sales.SalesOrderHeader table and returns 
+the sales count for each day of the month and returns this data to the parent query. 
+Next, the parent query groups the orders by each day of the month, resulting in 31 rows total for each day.
+Additionally, the select statment uses the total orders count, provied by the sub-query, and calcualtes the average sales count per day.
+ Finally, the query sorts the rows in the output by day of the month. </p>
+</center>
+</div>
+</div>
+</body>
+
+</html>

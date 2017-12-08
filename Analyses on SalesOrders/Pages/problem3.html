@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+<title>Problem 3</title>
+<head>
+<style type="text/css">
+
+.header {color:#000000;
+		text-shadow: 2px 2px 2px black;
+		font-size: 120%;
+		
+}
+#div1 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+height: 2000px;
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+
+#div2 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+height: 2000px;
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+.container {
+			
+			background-color: white;
+			position: relative;
+			opacity: 0.7;
+			height: 5px;
+			padding-top: 20px;
+			padding-bottom: 30px;
+			margin: -25px 100px 0px 100px;
+			text-decoration: none;
+			border: 3px solid #00ccff;
+			}
+.menuitem a{
+		color: black;
+		position: relative;
+		text-decoration: none;
+		text-shadow: 1px 2px 10px black;
+		font: bold 20px/10px Georiga, serif;
+	
+	}
+	
+	.title a{
+		
+			margin: 3px 2px;
+			color: #ffffff;
+			text-shadow: 2px 2px 1px black;
+			text-decoration: none;
+			
+			font: bold 70px/100px Georgia, serif;
+			
+			}	
+			
+table, th, td {
+border: 1px solid black;
+padding: 1px;
+border-spacing: 15px;
+float: center;
+
+}
+#question {
+	position: absolute;
+	top: 320px;
+	right: 775px;
+	width: 520px;
+	height: 250px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+	}
+#solution {
+	position: absolute;
+	top: 320px;
+	right: 50px;
+	width: 700px;
+	height: 250px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#table {
+	position: absolute;
+	top: 620px;
+	right: 885px;
+	width: 400px;
+	height: 600px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#proof {
+	position: absolute;
+	top: 620px;
+	right: 150px;
+	width: 600px;
+	height: 220px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+#explaination {
+	position: absolute;
+	top: 850px;
+	right: 150px;
+	width: 600px;
+	height: 180px;
+	border: 3px solid black;	
+	background: rgba(201, 214, 229, 0.5);
+	}
+#grad {
+	background: radial-gradient(circle, #9CBFE8, #4694F0, #A0A4A8);
+
+}
+a.menuactive {color: white;
+font-size: 180%;
+border-right: 4px solid #00399D;
+background-color: lightgrey;
+}	
+a.menu:hover {color: white;
+border-left: 4px solid #00399D;
+background-color: lightgrey;}		
+</style>
+</head>
+<body id="grad">
+<center>
+
+<h1 class="title"><a href="../index.html">Problem 3</a></h1>
+<div class="container">
+		<div class="menuitem">
+		
+						• <a class="menu" href="problem1.html">Problem 1</a> • 
+						<a class="menu"href="problem2.html">Problem 2</a> • 
+						<a class="menuactive" href="problem3.html">Problem 3</a> • 
+						<a class="menu" href="problem4.html">Problem 4</a> • 
+						<a class="menu" href="problem5.html">Problem 5</a> • 
+						<a class="menu" href="datatype.html">Data Types</a> • 
+						<a class="menu" href="resume.html">Resume</a> • 
+						
+	
+	</div>
+	</div>
+
+</center>
+<div id="div1">
+
+<div id="question">
+<center>
+<h3 class="header">Question</h3>
+<p>"What is the average sales, not including freight, for each month of the year - January through December? (12 rows)"</p>
+</center>
+</div>
+<div id="solution">
+<center>
+<h3 class="header">Solution</h3>
+<pre>
+select		MonthlyTotals.[Month], CAST(AVG(MonthlyTotals.Sales) AS decimal(10,2))
+from
+	(select		DATEPART(Year, soh.OrderDate) [Year], 
+				DATEPART(MONTH, soh.OrderDate) [Month], 
+				sum(sod.UnitPrice * sod.OrderQty) [Sales]
+	from		sales.SalesOrderHeader soh
+	inner join	sales.SalesOrderDetail sod
+	on			sod.SalesOrderID = soh.SalesOrderID
+	group by	DATEPART(Year, soh.OrderDate), DATEPART(MONTH, soh.OrderDate)) 
+				MonthlyTotals
+GROUP BY	MonthlyTotals.[Month], DATENAME(MONTH, MonthlyTotals.[Month])
+
+
+</pre>
+</center>
+</div>
+<div id="table">
+<center>
+<h3 class="header">Table</h3>
+<table>
+<tt>Average Sales per Month of the Year</tt>
+  <tr>
+    <th>Month</th>
+    <th>Average</th> 
+   </tr>
+  <tr>
+    <td>1</td>
+    <td>2026096.65</td> 
+      </tr>
+  <tr>
+    <td>2</td>
+    <td>3165770.15</td> 
+   </tr>
+    <tr>
+    <td>3</td>
+    <td>2791054.30</td> 
+   </tr>
+  <tr>
+    <td>4</td>
+    <td>2583170.31</td> 
+      </tr>
+  <tr>
+    <td>5</td>
+    <td>3865616.86</td> 
+   </tr>
+    <tr>
+    <td>6</td>
+    <td>3245616.72</td> 
+   </tr>
+  <tr>
+    <td>7</td>
+    <td>1885778.98</td> 
+   </tr>
+  <tr>
+    <td>8</td>
+    <td>3790049.08</td> 
+   </tr>
+    <tr>
+    <td>9</td>
+    <td>3350244.33</td> 
+   </tr>
+  <tr>
+    <td>10</td>
+    <td>2317782.03</td> 
+      </tr>
+  <tr>
+    <td>11</td>
+    <td>3650340.87</td> 
+   </tr>
+    <tr>
+    <td>12</td>
+    <td>3491183.15</td> 
+   </tr>
+  
+
+   
+</table>
+</center>
+</div>
+<div id="proof">
+<center>
+<h3 class="header">Proof Query</h3>
+<pre>
+select		DATEPART(YEAR, soh.OrderDate), 
+			DATEPART(MONTH, soh.OrderDate), 
+			sum(sod.UnitPrice * sod.OrderQty) [Sales]
+	from		sales.SalesOrderHeader soh
+	inner join	sales.SalesOrderDetail sod
+	on			sod.SalesOrderID = soh.SalesOrderID
+	where		DATEPART(MONTH, soh.OrderDate) = 1
+	group by	DATEPART(YEAR, soh.OrderDate), DATEPART(MONTH, soh.OrderDate)
+
+	select (2088218.4151 + 4292364.4301 + 3970636.4313) / 3
+</pre>
+</center>
+</div>
+<center>
+<div id="explaination">
+<center>
+<h3 class="header">Explaination</h3>
+<p>The sub-query statement queries the rows from the sales.SalesOrderHeader
+table and returns the sales count for each month and returns this data to the parent query. 
+Next, the parent query groups the sales by month, resulting in 12 rows total for each month. 
+Additionally, the select statment uses the total sales count, provied by the sub-query, and calcualtes the average sales count per month.
+Finally, the query sorts the rows in the output by month. </p>
+</center>
+</div>
+</div>
+</body>
+
+</html>

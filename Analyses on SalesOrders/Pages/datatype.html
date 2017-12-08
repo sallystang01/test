@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html></html>
+<title>Datatype</title>
+<head>
+<style type="text/css">
+
+.header {color:#000000;
+		text-shadow: 2px 2px 2px black;
+		font-size: 120%;
+		
+}
+}
+#div1 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+
+#div2 {
+margin-top: 50px;
+margin-bottom: 50px;
+margin-left: 10px;
+margin-right: 20px;
+height: 2500px;
+    width: 95%;
+    border: 3px solid white;
+    padding: 20px;
+    
+    background: rgba(201, 214, 229, 0.5);
+	
+}
+.container {
+			
+			background-color: white;
+			position: relative;
+			opacity: 0.7;
+			height: 5px;
+			padding-top: 20px;
+			padding-bottom: 30px;
+			margin: -25px 100px 0px 100px;
+			text-decoration: none;
+			border: 3px solid #00ccff;
+			}
+.menuitem a{
+		color: black;
+		position: relative;
+		text-decoration: none;
+		text-shadow: 1px 2px 10px black;
+		font: bold 20px/10px Georiga, serif;
+	
+	}
+	
+	.title a{
+		
+			margin: 3px 2px;
+			color: #ffffff;
+			text-shadow: 2px 2px 1px black;
+			text-decoration: none;
+			
+			font: bold 70px/100px Georgia, serif;
+			
+			}	
+			
+table, th, td {
+border: 1px solid black;
+padding: 1px;
+border-spacing: 15px;
+ text-align: center;
+
+width: 1000px;
+
+}
+
+#table {
+	position: absolute;
+	top: 300px;
+	right: 70px;
+	width: 1200px;
+	height: 1700px;
+	border: 3px solid black;
+	background: rgba(201, 214, 229, 0.5);
+}
+
+
+#grad {
+	background: radial-gradient(circle, #9CBFE8, #4694F0, #A0A4A8);
+
+}
+a.menuactive {color: white;
+font-size: 180%;
+border-right: 4px solid #00399D;
+background-color: lightgrey;
+}	
+a.menu:hover {color: white;
+border-left: 4px solid #00399D;
+background-color: lightgrey;}		
+
+a.table:hover {color: white;
+border: 4px solid #00399D;
+background-color: #689AF1;}
+
+</style>
+</head>
+<body id="grad">
+<center>
+
+<h1 class="title"><a href="../index.html">Data Types</a></h1>
+<div class="container">
+		<div class="menuitem">
+		
+						• <a class="menu" href="problem1.html">Problem 1</a> • 
+						<a class="menu"href="problem2.html">Problem 2</a> • 
+						<a class="menu" href="problem3.html">Problem 3</a> • 
+						<a class="menu" href="problem4.html">Problem 4</a> • 
+						<a class="menu" href="problem5.html">Problem 5</a> • 
+						<a class="menuactive" href="pages/datatype.html">Data Types</a> • 
+						<a class="menu" href="resume.html">Resume</a> • 
+						
+	
+	</div>
+	</div>
+
+</center>
+<center>
+<div id="div2">
+</center>
+<div id="table">
+<center>
+<h3 class="header">Data Type Table</h3>
+<table>
+<tt></tt>
+  <tr>
+    <th>Date Type</th>
+    <th>Range/Limit</th> 
+	<th>Storage</th>
+   </tr>
+  <tr>
+    <td>Bigint</td>
+    <td>'9,223,372,036,854,775,808 <br>
+to <br>
+'9,223,372,036,854,775,807 / 0 <br>
+to <br>
+18,446,744,073,709,551,61'</td> 
+	<td>8 Bytes</td> 
+      </tr>
+  <tr>
+    <td>Int</td>
+    <td>' -2,147,483,648<br>
+ to <br>
++2,147,483,647 / 0<br>
+ to<br>
+ 4,294,967,295 '</td> 
+  <td>4 Bytes</td>
+   </tr>
+    <tr>
+    <td>Smallint</td>
+    <td>' -32,768<br>
+ to<br>
+ +32,767 / 0<br>
+ to <br>
+65,535'</td> 
+  <td>2 Bytes</td>
+   </tr>
+  <tr>
+    <td>Tinyint</td>
+    <td>'-128<br>
+ to<br>
+ +127 / 0<br>
+ to<br>
+ 255'</td> 
+ <td>1 Byte</td>
+      </tr>
+  <tr>
+    <td>Bit</td>
+    <td>'can take a value<br>
+ of 1, 0, or NULL.'</td> 
+ <td>1 Bit</td>
+   </tr>
+    <tr>
+    <td>Decimal</td>
+    <td>'The precision must be between 1 and 31. <br>
+The scale must be less than or equal to the precision.'</td> 
+<td>13, or 17 bytes depending on value of <i>n</i></td>
+   </tr>
+  <tr>
+    <td>Float</td>
+    <td>'- 1.79E+308<br>
+ to<br>
+ -2.23E-308, 0 and 2.23E-308 <br>
+to <br>
+1.79E+308'</td> 
+<td>4 bytes or 8 bytes (Depends on Value of <i>n</i>)</td>
+   </tr>
+  <tr>
+    <td>Real</td>
+    <td>'- 3.40E + 38<br>
+ to<br>
+ -1.18E - 38, 0 C8and 1.18E - 38 <br>
+to<br>
+ 3.40E + 38'</td> 
+ <td>4 Bytes</td>
+   </tr>
+    <tr>
+    <td>Money</td>
+    <td>' -922,337,203,685,477.5808<br>
+ to <br>
+922,337,203,685,477.5807 <br>
+ to <br>
+922,337,203,685,477.58'</td> 
+<td>8 Bytes</td>
+   </tr>
+   <tr>
+    <td>Smallmoney</td>
+    <td> - 214,748.3648<br> to <br>214,748.3647</td> 
+<td>4 Bytes</td>
+   </tr>
+   <tr>
+    <td>Datime</td>
+    <td> Date: <br> 
+January 1, 1753, through December 31, 9999 <br> 
+Time:<br> 
+00:00:00 through 23:59:59.997</td> 
+<td>8 Bytes</td>
+   </tr>
+   <tr>
+    <td>Smalldatetime</td>
+    <td> Date:<br> 
+January 1, 1900, through June 06, 2079 <br> 
+Time:<br> 
+00:00:00 through 23:59:59.997</td> 
+<td>4 Bytes</td>
+   </tr>
+    <tr>
+    <td>Timestamp</td>
+    <td>Date:
+ Jauary 1, 1000 through December 31, 9999<br>
+Time:<br>
+00:00:00 through 23:59:59.997'</td> 
+<td>8 Bytes</td>
+   </tr>
+    <tr>
+    <td>Char</td>
+    <td>1 through 8,000</td> 
+<td>The storage size is n bytes,<br>
+n defines the string length and must be a value from 1 through 8,000
+</td>
+   </tr>
+    <tr>
+    <td>Varchary</td>
+    <td>1 through 8,000</td> 
+<td>the actual length 
+of the data entered + 2 bytes</td>
+   </tr>
+    <tr>
+    <td>Binary</td>
+    <td>1 through 8,000</td> 
+<td>The storage size is n bytes,
+n defines the string length and must be a value from 1 through 8,000</td>
+   </tr>
+    <tr>
+    <td>Varbinary</td>
+    <td>1 through 8,000</td> 
+<td>the actual length 
+of the data entered + 2 bytes</td>
+   </tr>
+    <tr>
+    <td>Uniqueidentifier</td>
+    <td>32 hexdigits (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx,
+ in which each x is a hexadecimal digit in the range 0-9 or a-f) 
+10^38 numbers.</td> 
+<td>16 bytes</td>
+   </tr>
+    
+
+</table>
+</div>
+</center>
+</div>
+</body>
+
+</html>
