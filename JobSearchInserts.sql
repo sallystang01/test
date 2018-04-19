@@ -60,7 +60,10 @@ values ('Branch & Business Center Manager (MLO)', 'Manages and leads priorities 
 'Full Time', 'Gainesville FL', 0, 3, 5, 4, 'Undetermined'),
 
  ('Engineering Technologist II', 'Kavaliro',
-'Full Time', 'Gainesville FL', 1, 4, 6, 5, 'Undetermined')
+'Full Time', 'Gainesville FL', 1, 4, 6, 5, 'Undetermined'),
+('Software Developer', 'Software Inc', 'Full Time', 'Gainesville FL', 1, 4, 6 ,5, 'Undetermined'),
+
+('Computer Programer', 'Computers Inc', 'Full Time', 'Gainesville FL', 1, 4, 6 ,5, 'Undetermined')
 
 
 

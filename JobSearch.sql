@@ -6,7 +6,7 @@ BEGIN
 END
 
 create database JobSearch
-yolo
+
 GO
 USE JobSearch
 
@@ -271,3 +271,92 @@ values
 (1, 'Application','Filled Out Application', 1),
 (1, 'Interview','Interviewed with Julia', 1)
 
+
+
+
+GO
+CREATE Proc spLeadsPerDay @StartDate DATE, @EndDate DATE
+
+As
+
+select count(leadId), Cast(RecordDate AS Date)
+from Leads
+group by Cast(RecordDate AS Date)
+Go
+
+
+Create Proc spOldLeads
+As
+select * from Leads
+inner join
+Activities a
+on a.LeadID = Leads.LeadID
+where a.ModifiedDate < DATEADD(Day, -7, getdate())
+
+GO
+CREATE PROC spNumberOfLeadsPerSource
+AS
+select count(leadid) [Number of Leads], s.SourceName
+from leads l
+inner join
+Sources s 
+on s.SourceID = l.SourceID
+group by  s.SourceName
+having count(leadid) > 0
+
+GO
+
+Create Proc spActiveContactList
+AS
+select *
+from Companies c
+inner join
+Contacts cc
+on cc.CompanyID = c.CompanyID
+where cc.Active = 1 
+
+Go
+CREATE PROC spActiveCallList
+AS
+select co.CompanyName, l.JobTitle, l.JobDescription, l.Location, concat(c.ContactFirstName, ' ', c.ContactLastName) [Contact],
+		c.Phone, DATEDIFF(day, a.modifieddate, getdate()) [Days Since Last Contact]
+from leads l
+inner join
+Contacts c
+on l.ContactID = c.ContactID
+inner join
+Companies co
+on co.CompanyID = l.CompanyID
+inner join 
+Activities a
+on a.LeadID  = l.LeadID
+where l.Active = 1
+order by [Days Since Last Contact] desc
+
+GO
+CREATE PROC spSearchLog (@StartDate DATE, @EndDate DATE)
+AS
+Select a.ActivityDate, a.ActivityType, l.Jobtitle, CC.Companyid, a.Complete 
+from Activities a
+inner join Leads l 
+on l.Leadid = a.Leadid
+inner join Companies c
+on c.CompanyID = l.Companyid
+inner join Contacts cc
+on cc.Companyid = c.Companyname
+where A.modifieddate >= @StartDate
+AND A.modifieddate <= @EndDate
+
+GO
+CREATE PROC spLeadReport
+AS
+select l.LeadID, CC.CompanyID, c1.CompanyName [Agency Name], Concat(cc.Courtesytitle, ' ', cc.ContactFirstname, ' ', cc.ContactLastName) [Contact], CC.Phone, CC.email, S.Sourcename
+from leads l
+inner join Companies c
+on c.CompanyID = l.Companyid
+inner join Contacts cc
+on cc.Companyid = c.CompanyID
+left join Companies_1 c1
+on c1.CompanyID = l.CompanyID
+inner join Sources s
+on s.SourceID = l.sourceid
